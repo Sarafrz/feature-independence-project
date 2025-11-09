@@ -1,69 +1,52 @@
-Feature Independence & Optimization Analysis
+# Feature Independence & Optimization Analysis
 
-This project explores how linear independence and feature-space quality influence the performance and convergence of machine learning algorithms. The goal is to help students understand how reducing collinearity improves optimization stability—both in derivative-based (e.g., SGD) and derivative-free (e.g., KMeans) methods.
+This project investigates how **linear independence** and **feature-space quality** affect the stability, convergence speed, and performance of machine learning models. The goal is to understand how reducing **collinearity** improves optimization for both derivative-based methods (e.g., SGD) and iterative/derivative-free methods (e.g., KMeans).
 
-Objectives
+## Objectives
+- Extract independent or low-collinearity features using **PCA, ICA, and SVD**.
+- Apply basic feature selection (Variance Threshold, SelectKBest, RFE).
+- Analyze covariance/correlation structure and identify collinearity.
+- Study optimization behavior in:
+  - **Regression:** LinearRegression (analytical OLS) vs SGDRegressor  
+  - **Classification:** KNN vs RandomForest  
+  - **Clustering:** KMeans (EM-style optimization)
 
-Extract independent / low-collinearity features using PCA, ICA, SVD.
+## Key Ideas
+- Independent or orthogonal features improve numerical stability.
+- PCA reduces collinearity and often accelerates SGD convergence.
+- Distance-based models (KNN, KMeans) benefit from reduced dimensions.
+- Tree-based models (RandomForest) are generally robust to collinearity.
 
-Apply basic feature selection methods (SelectKBest, RFE, variance filters).
+## Datasets Used
+- **WDBC (Breast Cancer Diagnostic)** — Classification  
+- **Boston Housing** — Regression  
+- **Iris** — Clustering  
 
-Analyze covariance, correlation, and the effect of feature redundancy.
+## Repository Structure
+data/ # Raw datasets
+notebooks/ # Jupyter notebooks for the 3 tasks
+outputs/ # Figures (heatmaps, EVR plots, loss curves) + tables
 
-Study how feature quality affects:
 
-Regression (OLS vs SGD)
+## Workflow Summary
+1. Load and standardize data  
+2. Analyze collinearity via covariance/correlation + heatmaps  
+3. Apply feature extraction (PCA, ICA, SVD)  
+4. Apply feature selection (SelectKBest, RFE, variance filtering)  
+5. Train models on:  
+   - original features  
+   - PCA-transformed features  
+   - feature-selected subsets  
+6. Compare performance + optimization behavior across all feature spaces  
 
-Classification (KNN vs RandomForest)
-
-Clustering (KMeans optimization behavior)
-
-Datasets
-
-WDBC – Classification
-
-Boston Housing – Regression
-
-Iris – Clustering
-
-What the Project Shows
-
-PCA and other extraction methods create orthogonal features that often stabilize optimization.
-
-SGD typically converges faster in de-correlated, reduced spaces.
-
-KMeans and KNN (distance-based models) are sensitive to dimensionality, improving after PCA.
-
-RandomForest is generally robust to collinearity, showing less change across spaces.
-
-Repository Structure
-data/        # Raw datasets
-notebooks/   # Three Jupyter notebooks (classification, regression, clustering)
-outputs/     # Figures (heatmaps, EVR, loss curves) and tables of metrics
-
-Workflow Summary
-
-Load & standardize data
-
-Analyze collinearity (covariance + heatmaps)
-
-Apply PCA / ICA / SVD
-
-Apply SelectKBest / RFE
-
-Train models on:
-
-original features
-
-PCA features
-
-selected features
-
-Compare performance, convergence, stability
-
-Requirements
+## Tools & Requirements
 numpy
 pandas
 scikit-learn
 matplotlib
 seaborn
+
+
+## Purpose
+This project demonstrates how **feature design** and **optimization** are tightly connected, and why understanding independence/collinearity is essential for reliable machine learning models.
+
