@@ -22,11 +22,6 @@ This project investigates how **linear independence** and **feature-space qualit
 - **Boston Housing** — Regression  
 - **Iris** — Clustering  
 
-## Repository Structure
-data/ # Raw datasets
-notebooks/ # Jupyter notebooks for the 3 tasks
-outputs/ # Figures (heatmaps, EVR plots, loss curves) + tables
-
 
 ## Workflow Summary
 1. Load and standardize data  
